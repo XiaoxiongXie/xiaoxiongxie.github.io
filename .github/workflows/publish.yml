@@ -1,11 +1,15 @@
 name: Build and deploy academic website
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      publish_site:
+        description: 'Publish the website publicly (leave unchecked while editing)'
+        type: boolean
+        required: true
+        default: false
 
 permissions:
   contents: read
@@ -16,6 +20,7 @@ concurrency:
 
 jobs:
   build:
+    if: github.event_name == 'pull_request' || (github.event_name == 'workflow_dispatch' && inputs.publish_site && github.ref == 'refs/heads/main')
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -49,7 +54,7 @@ jobs:
           path: _site
 
   deploy:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'workflow_dispatch' && inputs.publish_site && github.ref == 'refs/heads/main'
     needs: build
     outputs:
       page_url: ${{ steps.deployment.outputs.page_url }}
@@ -67,7 +72,7 @@ jobs:
 
   notify-search-engines:
     needs: deploy
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'workflow_dispatch' && inputs.publish_site && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:

@@ -103,12 +103,15 @@ assert(pubHtml.includes('download="xiaoxiong-xie-publications.bib"'), "Missing c
 const search = JSON.parse(Deno.readTextFileSync(`${output}/search.json`));
 assert(search.some((entry: any) => entry.href.includes("publications/")), "Publications missing from local search index");
 const workflow = parse(Deno.readTextFileSync(".github/workflows/publish.yml")) as any;
-assert(workflow.on.push.branches.includes("main"), "Workflow does not deploy main");
+assert(!workflow.on.push && !workflow.on.schedule, "Publishing is paused: pushes and schedules must not deploy");
+assert(workflow.on.workflow_dispatch?.inputs?.publish_site?.type === "boolean" && workflow.on.workflow_dispatch.inputs.publish_site.default === false, "Public deployment must require explicit manual opt-in");
 assert(workflow.jobs.deploy.needs === "build", "Deploy job must depend on build");
 assert(workflow.jobs.deploy.permissions.pages === "write" && workflow.jobs.deploy.permissions["id-token"] === "write", "Missing Pages/OIDC permissions");
 assert(workflow.jobs.deploy.environment.name === "github-pages", "Missing Pages environment");
 assert(workflow.jobs["notify-search-engines"]?.needs === "deploy", "Search notification must wait for successful deployment");
-assert(workflow.jobs.deploy.if.includes("github.event_name != 'pull_request'") && workflow.jobs.deploy.if.includes("github.ref == 'refs/heads/main'"), "Deployment must be restricted to main and exclude pull requests");
+for (const job of [workflow.jobs.deploy, workflow.jobs["notify-search-engines"]]) {
+  assert(job.if.includes("github.event_name == 'workflow_dispatch'") && job.if.includes("inputs.publish_site") && job.if.includes("github.ref == 'refs/heads/main'"), "Publishing and search notification must require manual opt-in on main");
+}
 assert(workflow.jobs.deploy.steps.some((step: any) => step.uses === "actions/deploy-pages@v4"), "Missing official Pages deployment action");
 const steps = workflow.jobs.build.steps;
 const renderIndex = steps.findIndex((step: any) => step.run === "quarto render");
