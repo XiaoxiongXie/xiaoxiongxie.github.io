@@ -1,6 +1,7 @@
 // Dependency-free build checks, executed with the Deno runtime bundled in Quarto.
 import { config, siteUrl, publications, htmlFiles, cleanPath } from "./common.ts";
 import { parse } from "stdlib/yaml";
+import { indexNowPayload } from "./notify-indexnow.mjs";
 const base = siteUrl();
 const output = "_site";
 const errors: string[] = [];
@@ -61,10 +62,14 @@ for (const [path, html] of documents) {
   assert(!/googletagmanager|google-analytics\.com|plausible\.io\/js/.test(html), label + "tracking script found");
 }
 const sitemap = Deno.readTextFileSync(`${output}/sitemap.xml`);
+const indexNowKey = Deno.readTextFileSync("data/indexnow-key.txt").trim();
+const notification = indexNowPayload(base.href, indexNowKey, sitemap);
+assert(Deno.readTextFileSync(`${output}/${indexNowKey}.txt`).trim() === indexNowKey, "Missing or incorrect IndexNow ownership file");
 const locations = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => decode(m[1])).sort();
 const expected = [...documents.keys()].filter(p => p !== "404.html").map(p => new URL(cleanPath(p), base).href).sort();
 assert(sitemap.includes('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'), "Sitemap namespace missing");
 assert(JSON.stringify(locations) === JSON.stringify(expected), "Sitemap does not match public pages");
+assert(JSON.stringify([...notification.urlList].sort()) === JSON.stringify(expected), "IndexNow payload differs from public canonical URLs");
 const robots = Deno.readTextFileSync(`${output}/robots.txt`);
 assert(robots.includes(`Sitemap: ${base}sitemap.xml`), "Incorrect robots sitemap URL");
 for (const bot of ["*", "Googlebot", "Bingbot", "OAI-SearchBot"]) assert(robots.includes(`User-agent: ${bot}\nAllow: /`), `Missing crawler allowance: ${bot}`);
@@ -102,6 +107,7 @@ assert(workflow.on.push.branches.includes("main"), "Workflow does not deploy mai
 assert(workflow.jobs.deploy.needs === "build", "Deploy job must depend on build");
 assert(workflow.jobs.deploy.permissions.pages === "write" && workflow.jobs.deploy.permissions["id-token"] === "write", "Missing Pages/OIDC permissions");
 assert(workflow.jobs.deploy.environment.name === "github-pages", "Missing Pages environment");
+assert(workflow.jobs["notify-search-engines"]?.needs === "deploy", "Search notification must wait for successful deployment");
 assert(workflow.jobs.deploy.if.includes("github.event_name != 'pull_request'") && workflow.jobs.deploy.if.includes("github.ref == 'refs/heads/main'"), "Deployment must be restricted to main and exclude pull requests");
 assert(workflow.jobs.deploy.steps.some((step: any) => step.uses === "actions/deploy-pages@v4"), "Missing official Pages deployment action");
 const steps = workflow.jobs.build.steps;

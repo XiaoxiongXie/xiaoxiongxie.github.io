@@ -40,6 +40,8 @@ jobs:
         run: quarto render
       - name: Validate generated website
         run: quarto run scripts/validate.ts
+      - name: Validate search notification safeguards
+        run: quarto run scripts/check-indexnow.ts
       - name: Upload GitHub Pages artifact
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v4
@@ -49,6 +51,8 @@ jobs:
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: build
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -60,3 +64,35 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  notify-search-engines:
+    needs: deploy
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Notify IndexNow after successful deployment
+        uses: actions/github-script@v9
+        env:
+          PAGES_URL: ${{ needs.deploy.outputs.page_url }}
+        with:
+          script: |
+            const { pathToFileURL } = require('node:url');
+            const { resolve } = require('node:path');
+            const { notifyIndexNow } = await import(pathToFileURL(resolve('scripts/notify-indexnow.mjs')).href);
+            try {
+              const result = await notifyIndexNow(process.env.PAGES_URL);
+              const message = `IndexNow: ${result.count} URLs, HTTP ${result.status}. ${result.message}`;
+              core.notice(message);
+              await core.summary.addHeading('Search notification').addRaw(message).write();
+            } catch (error) {
+              const message = `The website deployed, but IndexNow notification failed: ${error.message}`;
+              core.warning(message);
+              await core.summary.addHeading('Search notification needs attention').addRaw(message).write();
+            }

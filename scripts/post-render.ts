@@ -52,4 +52,7 @@ const robots = Deno.readTextFileSync("robots.txt").replace(/^Sitemap:.*$/m, `Sit
 Deno.writeTextFileSync(`${output}/robots.txt`, robots);
 Deno.writeTextFileSync(`${output}/.nojekyll`, "");
 Deno.writeTextFileSync(`${output}/publications.bib`, bibliography(pubs));
+const indexNowKey = Deno.readTextFileSync("data/indexnow-key.txt").trim();
+if (!/^[a-f0-9]{32}$/.test(indexNowKey)) throw new Error("Invalid IndexNow verification key.");
+Deno.writeTextFileSync(`${output}/${indexNowKey}.txt`, `${indexNowKey}\n`);
 console.log(`Finalised canonical URLs, structured data, robots.txt and sitemap (${urls.length} pages).`);
