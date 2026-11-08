@@ -1,0 +1,18 @@
+---
+title: "Publications"
+description: "Search verified publications by Xiaoxiong Xie on building energy, urban climate, natural ventilation, heat pumps and environmental monitoring."
+toc: false
+---
+
+::: {.page-intro}
+Research on buildings, energy and urban environments.
+:::
+
+This curated list includes verified journal articles, with selected contributions highlighted. For the full institutional record, including other research outputs, visit my [University Research Portal profile](https://researchportal.plymouth.ac.uk/en/persons/xiaoxiong-xie/). Publication years below follow the journal issue year where available; online-first dates can differ.
+
+::: {.generated-publications}
+:::
+
+::: {.source-note}
+Bibliographic records checked against publisher and institutional sources on 8 November 2026. Each entry links to its DOI and institutional record.
+:::

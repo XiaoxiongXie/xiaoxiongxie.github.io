@@ -1,0 +1,15 @@
+# Public pages may be indexed. The build updates the Sitemap URL from _quarto.yml.
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# To opt out of GPTBot only, add a separate group (see README.md).
+Sitemap: https://xiaoxiongxie.github.io/sitemap.xml

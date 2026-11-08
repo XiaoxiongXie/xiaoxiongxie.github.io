@@ -1,0 +1,116 @@
+---
+title: "Research"
+pagetitle: "Research | Urban–building climate interactions"
+description: "Xiaoxiong Xie’s research questions, methods and publications on urban–building interactions, climate-resilient retrofit, low-carbon energy and thermal exposure."
+---
+
+::: {.page-intro}
+Buildings are part of an urban climate. I investigate how this relationship shapes energy use and thermal conditions, and how it should inform climate adaptation.
+:::
+
+My work combines building energy simulation, urban climate modelling and environmental observations. The questions below connect these approaches to decisions about buildings, neighbourhoods and energy systems.
+
+## Methods and supporting evidence {#methods-and-evidence}
+
+This guide connects the research questions to published methods. The papers are collaborative contributions; their full author lists and bibliographic records are on the [publications page](../publications/index.qmd).
+
+::: {.table-scroll role="region" aria-label="Research methods and supporting publications, horizontally scrollable" tabindex="0"}
+| Research question | Approach and evidence type | Start with |
+|:---|:---|:---|
+| How do buildings and neighbourhood climate affect one another? | Coupled SUEWS–EnergyPlus simulations of energy demand and local climate. Results depend on the simulated buildings, weather and operation. | [Heat-pump study and its assumptions](heat-pumps/index.qmd) |
+| How does urban form affect ventilation and overheating? | Building simulations examining density, wind-pressure inputs and radiative exchange. These test specific physical processes rather than observing a retrofit in use. | [Density](../publications/index.qmd#xie-2023-density), [wind pressure](../publications/index.qmd#xie-2023-wind-pressure) and [longwave radiation](../publications/index.qmd#xie-2022-radiation) |
+| What conditions do pedestrians encounter? | Mobile environmental measurements along pedestrian routes. Their spatial and temporal coverage sets the scope of the observations. | [Mobile monitoring](../publications/index.qmd#lam-2025-monitoring) |
+| How can incomplete urban temperature records be used? | Data-driven gap filling of weather-station records. Reconstructed values are estimates, distinct from measurements. | [Gap-filling comparison](../publications/index.qmd#he-2025-gap-filling) |
+:::
+
+For retrofit applications, [UMAR](../projects/index.qmd#umar) provides the project context. Its listed objectives are kept separate from verified published outputs; earlier modelling papers are methodological background, not UMAR deliverables.
+
+::: {.topic-section}
+## Building–urban climate interactions {#urban-building-interactions}
+
+### The question
+
+How much does a building’s performance depend on its neighbours and the local climate? When do conventional weather inputs miss the conditions that a building actually experiences?
+
+### Why it matters
+
+Neighbouring buildings alter wind, radiation and air temperature. These processes affect the boundary conditions used to estimate ventilation, energy demand and overheating. Their influence can vary with urban form, season and climate.
+
+### Methods and evidence
+
+I use multi-scale modelling to connect the **Surface Urban Energy and Water Balance Scheme (SUEWS)** with **EnergyPlus**. Related work examines local weather inputs, inter-building longwave radiation, wind-pressure coefficients and building density. The 2023 density study compared idealised neighbourhoods across five Chinese cities and found that the implications for natural ventilation depended on climate and season.
+
+::: {.related}
+**Read the research:** [Urban weather inputs](../publications/index.qmd#tang-2021-weather) · [Longwave radiation](../publications/index.qmd#xie-2022-radiation) · [Building density and ventilation](../publications/index.qmd#xie-2023-density)
+
+**Related project:** [UMAR: bringing microclimate into retrofit assessment](../projects/index.qmd#umar)
+:::
+:::
+
+::: {.topic-section}
+## Climate-resilient buildings and retrofit {#climate-resilient-retrofit}
+
+### The question
+
+How can a retrofit reduce heating demand while remaining suitable for warmer summers? How should a neighbourhood’s microclimate influence the choice of measures?
+
+### Why it matters
+
+Energy savings and thermal resilience need to be assessed together. A useful retrofit assessment must consider the building, the outdoor conditions it faces and the way it is used.
+
+### Methods and evidence
+
+My interests include natural ventilation, overheating analysis and future-climate building simulation. In **UMAR**, which I led as Principal Investigator, the project aimed to connect urban and building models with economic appraisal to assess retrofit options for Plymouth social housing. The project’s objectives included evaluating insulation, shading and cool roofs in their local climate context.
+
+::: {.related}
+**Project:** [UMAR objectives and verified project record](../projects/index.qmd#umar)
+
+**Related methods:** [Wind-pressure inputs for natural ventilation](../publications/index.qmd#xie-2023-wind-pressure) · [Radiative exchange and indoor overheating](../publications/index.qmd#xie-2022-radiation)
+:::
+:::
+
+::: {.topic-section}
+## Building energy modelling and low-carbon technologies {#low-carbon-technologies}
+
+### The question
+
+What happens outside a building when its heating or cooling system changes? How do climate conditions, including humidity, affect the energy needed to maintain indoor conditions?
+
+### Why it matters
+
+Heating and cooling connect indoor comfort with outdoor heat exchange. Evaluating a technology at building scale alone can miss its interaction with neighbourhood conditions.
+
+### Methods and evidence
+
+Our 2024 heat-pump study used SUEWS and EnergyPlus to investigate future UK residential scenarios. Collaborative research also examines anthropogenic heat emissions in Colombo and the role of humidity in urban air-conditioning demand. These studies ask related questions at different scales; their results should be interpreted within each study’s assumptions.
+
+::: {.related}
+**Start here:** [How do air-source heat pumps affect urban microclimates?](heat-pumps/index.qmd)
+
+**Publications:** [Heat pumps in 2050s UK scenarios](../publications/index.qmd#xie-2024-heat-pumps) · [Heat emissions in Colombo](../publications/index.qmd#blunn-2024-colombo) · [Humidity and cooling demand](../publications/index.qmd#li-2026-humidity)
+:::
+:::
+
+::: {.topic-section}
+## Urban thermal exposure and environmental monitoring {#thermal-exposure}
+
+### The question
+
+How do thermal conditions vary along the routes people walk? What can observations tell us about the differences between built and vegetated environments, and how should gaps in urban measurements be handled?
+
+### Why it matters
+
+Neighbourhood averages cannot describe every location or moment. Measurements provide a complementary view of the environments people encounter and help expose the limits of available data.
+
+### Methods and evidence
+
+My collaborative work includes a trolley-based environmental monitoring system for pedestrian routes and data-driven gap filling for citizen weather stations. The mobile monitoring study considered thermal conditions and air quality together; the temperature-data study compared regression and machine-learning approaches to reconstruct missing observations.
+
+::: {.related}
+**Publications:** [Mobile monitoring of pedestrian environments](../publications/index.qmd#lam-2025-monitoring) · [Gap filling urban air-temperature data](../publications/index.qmd#he-2025-gap-filling)
+:::
+:::
+
+## Working together
+
+I am interested in collaborations that connect modelling with observations, or bring building engineering into wider questions of climate resilience. [Find collaboration and PhD enquiry details](../about/index.qmd#collaboration).

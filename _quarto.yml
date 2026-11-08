@@ -1,0 +1,79 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - research/index.qmd
+    - research/heat-pumps/index.qmd
+    - publications/index.qmd
+    - projects/index.qmd
+    - about/index.qmd
+    - accessibility/index.qmd
+    - 404.qmd
+  pre-render: scripts/prepare.ts
+  post-render: scripts/post-render.ts
+  resources:
+    - assets/
+    - robots.txt
+  preview:
+    port: 4200
+    browser: false
+
+website:
+  title: "Xiaoxiong Xie"
+  site-url: "https://xiaoxiongxie.github.io/"
+  description: "Dr Xiaoxiong Xie researches buildings, urban climate and energy systems at the University of Plymouth."
+  favicon: assets/favicon.svg
+  open-graph: true
+  navbar:
+    background: light
+    pinned: false
+    collapse-below: lg
+    left:
+      - href: index.qmd
+        text: Home
+      - href: research/index.qmd
+        text: Research
+      - href: publications/index.qmd
+        text: Publications
+      - href: projects/index.qmd
+        text: Projects & recognition
+      - href: about/index.qmd
+        text: About & contact
+  search:
+    location: navbar
+    type: overlay
+  page-footer:
+    border: true
+    left: "Dr Xiaoxiong Xie · University of Plymouth"
+    right:
+      - href: about/index.qmd#contact
+        text: Contact
+      - href: accessibility/index.qmd
+        text: Accessibility & privacy
+      - href: https://orcid.org/0000-0003-2280-1768
+        text: ORCID
+
+format:
+  html:
+    theme:
+      - cosmo
+      - styles.scss
+    lang: en-GB
+    toc: true
+    toc-title: On this page
+    title-block-banner: false
+    smooth-scroll: false
+    anchor-sections: true
+    link-external-newwindow: false
+    code-copy: false
+    include-in-header: _generated/person.html
+    include-after-body: includes/scripts.html
+    grid:
+      body-width: 850px
+      sidebar-width: 200px
+      margin-width: 220px
+      gutter-width: 2rem
+
+filters:
+  - scripts/publications.lua

@@ -1,0 +1,17 @@
+/_site/
+/.quarto/
+/_generated/
+/.tools/
+/.local/
+/node_modules/
+/site_libs/
+/*_files/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+*.pem
+*.key
+
+
+**/*.quarto_ipynb

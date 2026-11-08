@@ -1,0 +1,12 @@
+---
+title: "Page not found"
+description: "The requested page could not be found on Xiaoxiong Xie’s academic website."
+toc: false
+search: false
+header-includes: |
+  <meta name="robots" content="noindex">
+---
+
+The address may have changed. Use the navigation above or [return to the homepage](index.qmd).
+
+You can also browse [research](research/index.qmd) or [publications](publications/index.qmd).

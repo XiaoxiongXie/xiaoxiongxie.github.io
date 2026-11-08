@@ -1,0 +1,19 @@
+---
+title: "Accessibility & privacy"
+description: "Accessibility features, privacy choices and contact information for Xiaoxiong Xie’s personal academic website."
+toc: false
+---
+
+## Using this website
+
+This site is designed for keyboard navigation, responsive layouts and readable colour contrast. A “Skip to main content” link appears when focused with the keyboard. Publications remain readable when JavaScript is disabled; JavaScript adds search and filtering controls.
+
+If you encounter a barrier, please email [xiaoxiong.xie@plymouth.ac.uk](mailto:xiaoxiong.xie@plymouth.ac.uk) with the page address and a description of the problem.
+
+## Privacy
+
+This website includes no analytics or advertising scripts, tracking pixels, contact forms or embedded third-party widgets. Fonts, styles and site-search resources are served with the website. Search and publication filtering run in your browser.
+
+The site is hosted on GitHub Pages. Hosting requests are subject to [GitHub’s privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement). Following a link to another website takes you to a service with its own privacy practices.
+
+This is a personal academic website. Official institutional information is available from the [University of Plymouth](https://www.plymouth.ac.uk/staff/xiaoxiong-xie).
