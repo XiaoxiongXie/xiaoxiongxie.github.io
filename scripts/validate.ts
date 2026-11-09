@@ -38,6 +38,11 @@ for (const [path, html] of documents) {
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]);
   assert(new Set(ids).size === ids.length, label + "duplicate HTML IDs");
   if (!["404.html", "about/index.html"].includes(path)) assert(!/<meta[^>]*name="(?:robots|googlebot|bingbot)"[^>]*content="[^"]*noindex/i.test(html), label + "public page blocks indexing");
+  const bingPreferences = [...html.matchAll(/<meta\b[^>]*name="bingbot"[^>]*content="([^"]*)"/gi)];
+  assert(bingPreferences.length === 1, label + "expected one Bing usage-preference tag");
+  const bingTokens = (bingPreferences[0]?.[1] || "").toLowerCase().split(/\s*,\s*/);
+  assert(["noarchive", "ai-training:disallow", "ai-grounding:allow"].every(t => bingTokens.includes(t)), label + "missing current/future Bing training opt-out or grounding preference");
+  assert(!/<meta\b[^>]*name="(?:robots|bingbot)"[^>]*content="[^"]*\b(?:nocache|nosnippet|ai-grounding:disallow)\b/i.test(html), label + "conflicting Bing usage directive");
   assert(/<html[^>]*lang="en/i.test(html), label + "missing document language");
   assert(/name="viewport"/.test(html), label + "missing responsive viewport");
   assert(html.includes('id="quarto-document-content"') && html.includes('id="quarto-skip-link"'), label + "missing main content or skip link");
@@ -86,7 +91,16 @@ assert(JSON.stringify(locations) === JSON.stringify(expected), "Sitemap does not
 assert(JSON.stringify([...notification.urlList].sort()) === JSON.stringify(expected), "IndexNow payload differs from public canonical URLs");
 const robots = Deno.readTextFileSync(`${output}/robots.txt`);
 assert(robots.includes(`Sitemap: ${base}sitemap.xml`), "Incorrect robots sitemap URL");
-for (const bot of ["*", "Googlebot", "Bingbot", "OAI-SearchBot"]) assert(robots.includes(`User-agent: ${bot}\nAllow: /`), `Missing crawler allowance: ${bot}`);
+// Check each complete group, including duplicate/conflicting rules, so a policy
+// edit cannot silently enable training or block the intended search crawlers.
+const robotGroups = robots.replace(/\r/g, "").split(/(?=^User-agent:)/im);
+function checkCrawlerPolicy(bot: string, directive: "allow" | "disallow") {
+  const groups = robotGroups.filter(g => g.match(/^User-agent:\s*(.+)$/im)?.[1].trim().toLowerCase() === bot.toLowerCase());
+  const rules = [...(groups[0] || "").matchAll(/^(Allow|Disallow):\s*([^\n]*)$/gmi)];
+  assert(groups.length === 1 && rules.length === 1 && rules[0][1].toLowerCase() === directive && rules[0][2].trim() === "/", `Incorrect crawler policy: ${bot} must ${directive} /`);
+}
+for (const bot of ["*", "Googlebot", "Bingbot", "OAI-SearchBot", "ChatGPT-User", "Claude-SearchBot", "Claude-User", "PerplexityBot", "Perplexity-User", "Applebot"]) checkCrawlerPolicy(bot, "allow");
+for (const bot of ["GPTBot", "ClaudeBot", "Google-Extended", "Applebot-Extended", "CCBot", "__usage_ai-training"]) checkCrawlerPolicy(bot, "disallow");
 assert(Deno.statSync(`${output}/.nojekyll`).isFile, "Missing .nojekyll");
 const pubs = publications();
 const pubHtml = documents.get("publications/index.html") || "";

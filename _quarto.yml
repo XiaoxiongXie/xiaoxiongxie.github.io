@@ -76,6 +76,7 @@ format:
     include-in-header:
       - _generated/person.html
       - includes/search-verification.html
+      - includes/ai-preferences.html
     include-after-body: includes/scripts.html
     grid:
       body-width: 850px
