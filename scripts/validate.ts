@@ -6,6 +6,20 @@ const base = siteUrl();
 const output = "_site";
 const errors: string[] = [];
 const assert = (ok: unknown, message: string) => { if (!ok) errors.push(message); };
+// Resource globs must never include local review copies or source/tool state.
+const privateDirectories = new Set([".local", ".tools", ".quarto", ".git", ".codex", ".agents", "_generated", "_site", "node_modules"]);
+function checkPublicFiles(directory: string) {
+  for (const entry of Deno.readDirSync(directory)) {
+    const path = `${directory}/${entry.name}`;
+    if (entry.isDirectory) {
+      if (privateDirectories.has(entry.name)) assert(false, `Local-only directory in website output: ${path}`);
+      else checkPublicFiles(path);
+    } else {
+      assert(!/^(?:\.env(?:\.|$)|AGENTS\.md$|_quarto.*\.ya?ml$)/i.test(entry.name) && !/\.(?:docx?|pem|key|pfx)$/i.test(entry.name), `Private/source file in website output: ${path}`);
+    }
+  }
+}
+checkPublicFiles(output);
 const decode = (s: string) => s.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
 const files = htmlFiles(output);
 const documents = new Map(files.map(file => [file.slice(output.length + 1), Deno.readTextFileSync(file)]));
@@ -15,7 +29,7 @@ const schemasByPage = new Map<string, any[]>();
 let links = 0;
 for (const [path, html] of documents) {
   const label = `${path}: `;
-  const canonical = new URL(cleanPath(path), base).href;
+  const canonical = path === "about/index.html" ? base.href : new URL(cleanPath(path), base).href;
   const title = html.match(/<title>(.*?)<\/title>/s)?.[1];
   const description = html.match(/<meta name="description" content="([^"]*)"/i)?.[1];
   assert(title && !titles.has(title), label + "missing or duplicate title"); titles.add(title);
@@ -23,7 +37,7 @@ for (const [path, html] of documents) {
   assert((html.match(/<h1\b/g) || []).length === 1, label + "expected one H1");
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]);
   assert(new Set(ids).size === ids.length, label + "duplicate HTML IDs");
-  if (path !== "404.html") assert(!/<meta[^>]*name="(?:robots|googlebot|bingbot)"[^>]*content="[^"]*noindex/i.test(html), label + "public page blocks indexing");
+  if (!["404.html", "about/index.html"].includes(path)) assert(!/<meta[^>]*name="(?:robots|googlebot|bingbot)"[^>]*content="[^"]*noindex/i.test(html), label + "public page blocks indexing");
   assert(/<html[^>]*lang="en/i.test(html), label + "missing document language");
   assert(/name="viewport"/.test(html), label + "missing responsive viewport");
   assert(html.includes('id="quarto-document-content"') && html.includes('id="quarto-skip-link"'), label + "missing main content or skip link");
@@ -66,7 +80,7 @@ const indexNowKey = Deno.readTextFileSync("data/indexnow-key.txt").trim();
 const notification = indexNowPayload(base.href, indexNowKey, sitemap);
 assert(Deno.readTextFileSync(`${output}/${indexNowKey}.txt`).trim() === indexNowKey, "Missing or incorrect IndexNow ownership file");
 const locations = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => decode(m[1])).sort();
-const expected = [...documents.keys()].filter(p => p !== "404.html").map(p => new URL(cleanPath(p), base).href).sort();
+const expected = [...documents.keys()].filter(p => !["404.html", "about/index.html"].includes(p)).map(p => new URL(cleanPath(p), base).href).sort();
 assert(sitemap.includes('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'), "Sitemap namespace missing");
 assert(JSON.stringify(locations) === JSON.stringify(expected), "Sitemap does not match public pages");
 assert(JSON.stringify([...notification.urlList].sort()) === JSON.stringify(expected), "IndexNow payload differs from public canonical URLs");
@@ -91,7 +105,7 @@ const collection = schemasByPage.get("publications/index.html")?.find(s => s["@t
 const list = collection?.mainEntity;
 assert(list?.["@type"] === "ItemList" && list?.numberOfItems === pubs.length, "Missing publication collection");
 assert(JSON.stringify(list?.itemListElement?.map((item: any) => item.item["@id"])) === JSON.stringify(pubs.map(p => `https://doi.org/${p.doi}`)), "Collection does not reference the displayed publications in order");
-const profile = schemasByPage.get("about/index.html")?.find(s => s["@type"] === "ProfilePage");
+const profile = schemasByPage.get("index.html")?.find(s => s["@type"] === "ProfilePage");
 assert(profile?.mainEntity?.["@id"] === `${base}#person`, "ProfilePage must identify Xiaoxiong Xie");
 const explainerPage = schemasByPage.get("research/heat-pumps/index.html")?.find(s => s.mainEntity?.["@type"] === "Article");
 assert(explainerPage?.mainEntity?.citation?.["@id"] === "https://doi.org/10.1016/j.scs.2024.105811", "Explainer does not cite the original scholarly article");
@@ -102,6 +116,18 @@ for (const p of pubs) assert(bib.includes(`@article{${p.id},`) && bib.includes(`
 assert(pubHtml.includes('download="xiaoxiong-xie-publications.bib"'), "Missing citation download link");
 const search = JSON.parse(Deno.readTextFileSync(`${output}/search.json`));
 assert(search.some((entry: any) => entry.href.includes("publications/")), "Publications missing from local search index");
+assert(search.some((entry: any) => entry.href.includes("teaching/")), "Teaching missing from local search index");
+assert(search.some((entry: any) => entry.href.includes("background/")), "Academic background missing from local search index");
+assert(!search.some((entry: any) => /(?:^|\/)about\//.test(entry.href)), "Retired About page must not appear in search");
+assert(documents.get("about/index.html")?.includes('content="noindex, follow"'), "Retired About page must not be indexed");
+assert(config().website.navbar.pinned === true, "Navigation must remain visible while scrolling");
+const home = documents.get("index.html") || "";
+for (const id of ["about", "contact", "collaboration"]) assert(home.includes(`id="${id}"`), `Homepage missing ${id} destination`);
+const portrait = JSON.parse(Deno.readTextFileSync("data/profile.json"));
+assert(Boolean(portrait.portrait) === home.includes('class="profile-portrait"'), "Portrait rendering differs from its configuration");
+const person = schemasByPage.get("index.html")?.find(s => s["@type"] === "Person");
+for (const link of portrait.links) assert(home.includes(`href="${link.url.replaceAll('&', '&amp;')}"`) && person?.sameAs?.includes(link.url), `Profile link differs between Home and Person schema: ${link.label}`);
+assert(portrait.portrait ? person?.image === new URL(portrait.portrait, base).href : !person?.image, "Person portrait metadata differs from the visible profile");
 const workflow = parse(Deno.readTextFileSync(".github/workflows/publish.yml")) as any;
 assert(!workflow.on.push && !workflow.on.schedule, "Publishing is paused: pushes and schedules must not deploy");
 assert(workflow.on.workflow_dispatch?.inputs?.publish_site?.type === "boolean" && workflow.on.workflow_dispatch.inputs.publish_site.default === false, "Public deployment must require explicit manual opt-in");

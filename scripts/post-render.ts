@@ -6,7 +6,8 @@ const urls: string[] = [];
 const pubs = publications();
 for (const file of htmlFiles(output)) {
   const relative = file.slice(output.length + 1);
-  const canonical = new URL(cleanPath(relative), base).href;
+  const isRedirect = relative === "about/index.html";
+  const canonical = isRedirect ? base.href : new URL(cleanPath(relative), base).href;
   let html = Deno.readTextFileSync(file);
   // Keep a single canonical and a matching Open Graph URL, including directory-index URLs.
   html = html.replace(/<link\b[^>]*rel="canonical"[^>]*>\s*/g, "");
@@ -19,7 +20,7 @@ for (const file of htmlFiles(output)) {
     url: canonical, name: title, description, inLanguage: "en-GB",
     isPartOf: { "@id": `${base}#website` }, about: { "@id": `${base}#person` }
   };
-  if (relative === "about/index.html") {
+  if (relative === "index.html") {
     page["@type"] = "ProfilePage";
     page.mainEntity = { "@id": `${base}#person` };
   } else if (relative === "publications/index.html") {
@@ -44,7 +45,7 @@ for (const file of htmlFiles(output)) {
   const schema = jsonLd(page).replace('<script ', '<script id="page-schema" ');
   html = html.replace("</head>", `<link rel="canonical" href="${h(canonical)}">\n<meta property="og:url" content="${h(canonical)}">\n${schema}\n</head>`);
   Deno.writeTextFileSync(file, html);
-  if (relative !== "404.html") urls.push(canonical);
+  if (relative !== "404.html" && !isRedirect) urls.push(canonical);
 }
 // No fabricated last-modified dates: regenerate from the pages that actually exist.
 Deno.writeTextFileSync(`${output}/sitemap.xml`, `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(url => `  <url><loc>${h(url)}</loc></url>`).join("\n")}\n</urlset>\n`);

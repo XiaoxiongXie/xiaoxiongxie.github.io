@@ -9,7 +9,6 @@
     "pages": "718–730",
     "doi": "10.1038/s44284-026-00474-4",
     "topics": ["Building energy", "Urban climate"],
-    "selected": true,
     "summary": "Investigates the role of changing humidity in urban air-conditioning demand using coupled building energy and Earth system modelling.",
     "source": "https://orca.cardiff.ac.uk/id/eprint/188625/",
     "verified": "2026-11-08"
@@ -24,7 +23,6 @@
     "article": "113487",
     "doi": "10.1016/j.buildenv.2025.113487",
     "topics": ["Environmental monitoring", "Thermal exposure"],
-    "selected": true,
     "summary": "Develops and pilots a mobile monitoring system for studying pedestrian thermal conditions and air quality across urban environments.",
     "source": "https://researchportal.plymouth.ac.uk/en/publications/making-intra-urban-monitoring-a-walk-in-the-park-a-mobile-monitor/",
     "verified": "2026-11-08"
@@ -39,7 +37,6 @@
     "article": "112593",
     "doi": "10.1016/j.buildenv.2025.112593",
     "topics": ["Environmental monitoring", "Urban climate"],
-    "selected": false,
     "summary": "Evaluates data-driven methods for reconstructing missing urban temperature observations from citizen weather stations.",
     "source": "https://researchportal.plymouth.ac.uk/en/publications/gap-filling-crowdsourced-air-temperature-data-in-cities-using-dat/",
     "verified": "2026-11-08"
@@ -54,7 +51,6 @@
     "article": "105811",
     "doi": "10.1016/j.scs.2024.105811",
     "topics": ["Heat pumps", "Urban climate", "Building energy"],
-    "selected": true,
     "summary": "Uses SUEWS–EnergyPlus modelling to examine how residential heat pumps alter neighbourhood heat emissions and outdoor temperatures in future UK climate scenarios.",
     "source": "https://researchportal.plymouth.ac.uk/en/publications/could-residential-air-source-heat-pumps-exacerbate-outdoor-summer/",
     "explainer": "research/heat-pumps/",
@@ -70,7 +66,6 @@
     "article": "101828",
     "doi": "10.1016/j.uclim.2024.101828",
     "topics": ["Urban climate", "Building energy"],
-    "selected": false,
     "summary": "Estimates the spatial and daily variation of heat released by buildings, transport and people in Colombo, with scenarios for future emissions.",
     "source": "https://researchportal.plymouth.ac.uk/en/publications/spatial-and-temporal-variation-of-anthropogenic-heat-emissions-in/",
     "verified": "2026-11-08"
@@ -85,7 +80,6 @@
     "article": "110621",
     "doi": "10.1016/j.buildenv.2023.110621",
     "topics": ["Natural ventilation", "Urban climate", "Building energy"],
-    "selected": true,
     "summary": "Examines how neighbourhood density and local weather change simulated ventilation potential and cooling savings across five Chinese climate zones.",
     "source": "https://researchportal.plymouth.ac.uk/en/publications/impact-of-building-density-on-natural-ventilation-potential-and-c/",
     "verified": "2026-11-08"
@@ -100,7 +94,6 @@
     "article": "109951",
     "doi": "10.1016/j.buildenv.2022.109951",
     "topics": ["Natural ventilation", "Building energy"],
-    "selected": false,
     "summary": "Studies how wind-pressure coefficients and reference wind speeds influence simulations of ventilation, overheating and cooling energy use.",
     "source": "https://orca.cardiff.ac.uk/id/eprint/155293/",
     "verified": "2026-11-08"
@@ -115,7 +108,6 @@
     "article": "108628",
     "doi": "10.1016/j.buildenv.2021.108628",
     "topics": ["Urban climate", "Building energy", "Overheating"],
-    "selected": false,
     "summary": "Represents radiative exchange with surrounding buildings to assess its effects on simulated energy performance and indoor overheating.",
     "source": "https://researchportal.plymouth.ac.uk/en/publications/impact-of-inter-building-longwave-radiative-exchanges-on-building/",
     "verified": "2026-11-08"
@@ -130,9 +122,22 @@
     "article": "108088",
     "doi": "10.1016/j.buildenv.2021.108088",
     "topics": ["Urban climate", "Building energy"],
-    "selected": false,
     "summary": "Combines ERA5 and SUEWS to create neighbourhood-specific weather inputs and vertical profiles for building energy simulation.",
     "source": "https://researchportal.plymouth.ac.uk/en/publications/urban-meteorological-forcing-data-for-building-energy-simulations/",
     "verified": "2026-11-08"
+  },
+  {
+    "id": "xie-2020-neighbourhood",
+    "title": "Impact of neighbourhood-scale climate characteristics on building heating demand and night ventilation cooling potential",
+    "authors": ["Xiaoxiong Xie", "Ozge Sahin", "Zhiwen Luo", "Runming Yao"],
+    "year": 2020,
+    "journal": "Renewable Energy",
+    "volume": "150",
+    "pages": "943–956",
+    "doi": "10.1016/j.renene.2019.11.148",
+    "topics": ["Environmental monitoring", "Natural ventilation", "Urban climate", "Building energy"],
+    "summary": "Combines a year of fixed-station weather observations with building simulation to assess local climate effects on heating demand and night-ventilation cooling potential.",
+    "source": "https://centaur.reading.ac.uk/87507/",
+    "verified": "2026-11-09"
   }
 ]

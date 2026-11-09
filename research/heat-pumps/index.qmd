@@ -1,41 +1,38 @@
 ---
 title: "How do air-source heat pumps affect urban microclimates?"
-pagetitle: "Air-source heat pumps and urban microclimates | Research explainer"
-description: "An explainer of Xie et al.’s 2024 SUEWS–EnergyPlus study of heat pumps and UK neighbourhood temperatures, including modelled findings and limitations."
+pagetitle: "Heat pumps and urban climate"
+description: "How residential heat pumps affect neighbourhood heat exchange: the methods, findings and scope of Xiaoxiong Xie’s 2024 SUEWS–EnergyPlus study."
 ---
 
 [Research explainer · Building energy and urban climate]{.eyebrow}
 
-Air-source heat pumps transfer heat between a building and the outdoor air. This raises a question beyond the performance of the individual home: **could widespread heating and cooling change the local outdoor temperature?**
+**Could widespread heat-pump heating and cooling change local outdoor temperatures?** Our [2024 paper in *Sustainable Cities and Society*](https://doi.org/10.1016/j.scs.2024.105811) investigated this through coupled building and urban climate simulations for future UK scenarios.
 
-Our [2024 paper in *Sustainable Cities and Society*](https://doi.org/10.1016/j.scs.2024.105811) investigated this question using future UK climate scenarios.
-
-::: {.evidence-note}
-**What kind of evidence is this?** The reported temperature changes are outputs from coupled models. They are not field measurements of heat-pump deployment, and they are not forecasts for a particular street.
-:::
+<figure class="explainer-photo" id="heat-pump-installation">
+  <img src="../../assets/research/air-source-heat-pump-home.jpg" width="1280" height="960" alt="Air-source heat pump beside a home's brick facade, with a window, entrance door and planted gravel bed visible around the outdoor unit." decoding="async">
+  <figcaption>Photo: <a href="https://pixabay.com/photos/heat-pump-gas-energy-renewable-6209793/">HarmvdB / Pixabay</a></figcaption>
+</figure>
 
 ## The physical question
 
-In cooling mode, a heat pump moves heat from indoors to outdoors, with electricity use contributing to the heat released. In heating mode, it draws heat from the outdoor air and transfers it indoors. Replacing a gas boiler therefore changes both the energy system and the pattern of heat exchange with the neighbourhood.
-
-The study asked how those changes affect **anthropogenic heat**—heat associated with human activities—and local air temperature. It also examined how assumptions about cooling operation and heat accounting influence the result.
+In cooling mode, a heat pump releases indoor heat and the heat from its electricity use outdoors. In heating mode, it draws heat from the outdoor air. We examined how these exchanges change **anthropogenic heat**—heat associated with human activities—and local air temperature.
 
 ## How the study worked
 
 The modelling framework combined:
 
 - **EnergyPlus**, to represent building thermal behaviour, heating and cooling demand, and heat exchanges.
-- **SUEWS**, to represent the neighbourhood surface energy balance and local meteorological conditions.
+- **[SUEWS](https://suews.io/)**, to represent the neighbourhood surface energy balance and local meteorological conditions.
 
-EnergyPlus-derived heat emissions informed SUEWS neighbourhood temperatures, which then supplied a new EnergyPlus run. The models exchanged annual time series iteratively until successive 2 m temperature estimates differed by less than 0.01°C. This was sequential coupling, rather than simultaneous exchange at each timestep (§2.3).
+EnergyPlus heat emissions informed SUEWS neighbourhood temperatures, which fed into the next EnergyPlus run. The models exchanged annual time series until successive 2 m temperature estimates differed by less than 0.01°C.
 
-**The comparison matters:** heat pumps supplied both heating and cooling; the gas-boiler reference supplied heating with **no active summer cooling**. The summer results therefore do not compare heat pumps with existing air conditioning (§2.2).
+**Scenarios:** heat pumps supplied both heating and cooling; the gas-boiler reference supplied heating with **no active summer cooling**.
 
-The idealised neighbourhoods contained identical detached houses or low-rise flats, with buildings covering 50% of plan area and post-1996 building fabric. Weather inputs were UKCP09-derived Design Summer Years for 2040–2059 under the medium-emissions scenario. London was the detailed case; the comparison across nine UK cities used the flats archetype (§§2.4–2.6 and 3.4). [Read the paper via the institutional record](https://researchportal.plymouth.ac.uk/en/publications/could-residential-air-source-heat-pumps-exacerbate-outdoor-summer/).
+The idealised neighbourhoods contained identical detached houses or low-rise flats, with 50% building coverage and post-1996 fabric. Weather inputs were UKCP09-derived Design Summer Years for 2040–2059 under the medium-emissions scenario. London was the detailed case; the nine-city comparison used flats.
 
 ## What the simulations found
 
-These examples come from the **idealised London flats neighbourhood** on the illustrative hot and cold days in §3.1 and Fig. 7. They are changes relative to the gas-boiler reference, not seasonal averages or maxima across all cities and scenarios.
+For the **idealised London flats neighbourhood**, the **example-day peak differences** from the gas-boiler reference were (Fig. 7):
 
 ::: {.table-scroll role="region" aria-label="Modelled heat-pump results, horizontally scrollable" tabindex="0"}
 | London flats scenario | Change in building anthropogenic heat | Change in neighbourhood 2 m air temperature |
@@ -44,32 +41,22 @@ These examples come from the **idealised London flats neighbourhood** on the ill
 | Illustrative cold day, 8 February | Reduction up to **11.1 W/m²** | Reduction up to **0.16°C** |
 :::
 
-The direction of heat exchange therefore matters: summer cooling can add heat outdoors, while replacing boilers with heat pumps can reduce winter heat emissions. The magnitude depends on the buildings, location and operating assumptions. The [paper’s abstract](https://doi.org/10.1016/j.scs.2024.105811) describes the summer values as medians; this explainer follows the more specific example-day attribution in the results text and Fig. 7.
+Summer cooling added heat outdoors, while replacing boilers with heat pumps reduced winter heat emissions.
 
-## Limits of the evidence
+## Study scope {#limits-of-the-evidence}
 
-The paper’s discussion identifies several reasons to avoid applying these figures directly to an individual development:
-
-- **Simplified neighbourhoods.** Identical building archetypes stand in for a more varied building stock.
-- **Assumed building performance.** The future scenarios use post-1996 building characteristics. Older, less retrofitted buildings could have different energy demand and heat emissions.
-- **Other heat sources.** The analysis focuses on residential buildings; road-traffic heat and other anthropogenic sources were not included in that comparison.
-- **Scenario dependence.** Climate inputs, occupancy and heating or cooling practices shape the simulated response.
-- **Incomplete feedbacks.** Sequential coupling can miss interactions that direct timestep coupling would resolve.
-
-These are limitations of the study design, rather than evidence that the same change has been observed across UK cities. The neighbourhood-scale air temperature also should not be read as the temperature immediately beside an outdoor heat-pump unit. [Source: discussion in Xie et al. (2024)](https://doi.org/10.1016/j.scs.2024.105811).
+The results describe neighbourhood air temperature at 2 m. Building diversity, older fabric, climate, occupancy and operating practices can change the response. Traffic and other non-residential heat sources were excluded, and sequential coupling does not resolve feedback at every timestep.
 
 ## Why this is useful
 
-The study offers a way to examine heating and cooling alongside their urban context. My interpretation is that technology choices, building demand and outdoor thermal conditions should be assessed together. The analysis does not, by itself, determine the overall carbon benefit or suitability of a particular heat-pump installation.
-
-This work was associated with the [2024 CIBSE Building Simulation Award](../../projects/index.qmd#cibse-award). CIBSE also provides an [overview of the award-winning research](https://www.cibse.org/get-involved/special-interest-groups/all-sig-news/cibse-building-simulation-awards-2024-the-winning-entry-of-xiaoxiong-xie-university-of-plymouth/).
+The framework assesses heating and cooling options for both building energy demand and neighbourhood temperature. This work was associated with the [2024 CIBSE Building Simulation Award](../../background/index.qmd#cibse-award).
 
 ## Original publication and data
 
 Xiaoxiong Xie, Zhiwen Luo, Sue Grimmond, Yiqing Liu, Carlos E. Ugalde-Loo, Matthew T. Bailey and Xinfang Wang (2024). **Could residential air-source heat pumps exacerbate outdoor summer overheating and winter overcooling in UK 2050s climate scenarios?** *Sustainable Cities and Society*, 115, 105811. [doi:10.1016/j.scs.2024.105811](https://doi.org/10.1016/j.scs.2024.105811).
 
-[Institutional record and open-access paper](https://researchportal.plymouth.ac.uk/en/publications/could-residential-air-source-heat-pumps-exacerbate-outdoor-summer/) · [Associated dataset on Zenodo](https://zenodo.org/records/13351764)
+[Open-access paper](https://researchportal.plymouth.ac.uk/en/publications/could-residential-air-source-heat-pumps-exacerbate-outdoor-summer/) · [Dataset on Zenodo](https://zenodo.org/records/13351764)
 
-The Zenodo record describes weather inputs, a modelling notebook and simulation outputs. Its metadata is public, but **the files are restricted**; the record explains how to request access. This website does not rehost the files or independently reproduce the simulations.
+The Zenodo record describes weather inputs, a modelling notebook and simulation outputs. **Files are restricted-access**; requests can be made through the record.
 
 [Explore the wider research programme →](../index.qmd#low-carbon-technologies)

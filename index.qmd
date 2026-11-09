@@ -1,17 +1,20 @@
 ---
 title: ""
-pagetitle: "Urban–building climate interactions"
-description: "Dr Xiaoxiong Xie at the University of Plymouth studies urban–building climate interactions using SUEWS–EnergyPlus modelling and environmental monitoring."
+pagetitle: "Profile"
+description: "Dr Xiaoxiong Xie, Lecturer at the University of Plymouth, researches urban–building climate interactions, SUEWS–EnergyPlus modelling and climate-resilient buildings."
 page-layout: full
 body-classes: home
 title-block-style: none
 toc: false
 ---
 
-::: {.hero}
-::: {.hero-main}
-[Buildings · Urban climate · Energy]{.eyebrow}
+::: {.profile-intro #about}
+::: {.profile-photo}
+::: {.generated-portrait}
+:::
+:::
 
+::: {.profile-summary}
 # Dr Xiaoxiong Xie
 
 ::: {.position}
@@ -19,100 +22,68 @@ Lecturer in Building Engineering\
 University of Plymouth, UK
 :::
 
-::: {.summary}
-My research focuses on **urban–building climate interactions**: how local climate affects building energy demand and thermal conditions, and how buildings change their surroundings.
-
-I use coupled **SUEWS–EnergyPlus modelling** to study these feedbacks, alongside collaborative work on environmental monitoring. Applications include natural ventilation, heat pumps and climate-resilient retrofit.
-:::
-
-[Explore my research →](research/index.qmd){.text-link}
-
-[Methods and supporting publications](research/index.qmd#methods-and-evidence)
-:::
-
-::: {.hero-aside}
-## Academic profile
-
-Building engineering and urban climatology, with a focus on the places where people live and the systems that heat and cool them.
-
-<ul class="profile-links">
-<li><a href="https://www.plymouth.ac.uk/staff/xiaoxiong-xie">University of Plymouth profile ↗</a></li>
-<li><a href="https://orcid.org/0000-0003-2280-1768">ORCID: 0000-0003-2280-1768 ↗</a></li>
-<li><a href="https://researchportal.plymouth.ac.uk/en/persons/xiaoxiong-xie/">University Research Portal ↗</a></li>
-</ul>
+::: {.generated-profile-links}
 :::
 :::
 
-## Three connected research themes
+::: {.profile-bio}
+I study the interactions between **buildings, urban climate and energy systems**, with a focus on energy demand, thermal environments and climate resilience. My research asks how a building's urban surroundings affect its performance, and how heating and cooling technologies, in turn, change outdoor conditions.
 
-::: {.theme-grid}
-::: {.theme}
-[01]{.number}
+My work combines building energy simulation and urban climate modelling, particularly **[SUEWS](https://suews.io/)–EnergyPlus coupling**. I examine how local weather, urban form and heat exchange influence natural ventilation, indoor overheating and the performance of low-carbon heating and cooling systems.
 
-### Buildings in their urban context
+I apply these methods to **climate-resilient building retrofit**, including social housing through the [UMAR project](projects/index.qmd#umar). I also contribute to collaborative studies of urban thermal exposure and environmental monitoring.
 
-How do local temperature, wind and radiation change the performance of buildings—and how do buildings change their surroundings?
-
-[Urban–building interactions](research/index.qmd#urban-building-interactions)
-:::
-::: {.theme}
-[02]{.number}
-
-### Thermal resilience & retrofit
-
-How can retrofit and natural ventilation reduce energy demand while responding to overheating and future climate conditions?
-
-[Climate-resilient buildings](research/index.qmd#climate-resilient-retrofit)
-:::
-::: {.theme}
-[03]{.number}
-
-### Low-carbon energy & thermal exposure
-
-How do changing heating and cooling systems affect urban environments, and how can monitoring help us understand those environments?
-
-[Energy systems and exposure](research/index.qmd#low-carbon-technologies)
 :::
 :::
 
-::: {.research-feature}
-::: {}
-[Research explainer]{.eyebrow}
+::: {.research-map}
+## Research focus {#research-focus}
 
-## How do air-source heat pumps affect urban microclimates?
+::: {.research-pathways}
+::: {.research-pathway}
+<svg class="focus-icon" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false"><path d="M4 28h24M8 28V10l8-6 8 6v18M13 28v-8h6v8M12 13h2m4 0h2"/></svg>
 
-A closer look at the exchange of heat between homes and neighbourhoods, using coupled urban climate and building energy simulations.
+### [Buildings](research/index.qmd#climate-resilient-retrofit)
 
-[Read the explainer →](research/heat-pumps/index.qmd){.text-link}
+Natural ventilation, overheating and climate-resilient retrofit.
 :::
-::: {.feature-note}
-**From building performance to local climate**
+<svg class="pathway-connector" viewBox="0 0 32 32" width="36" height="36" aria-hidden="true" focusable="false"><path d="M4 16h24M10 10l-6 6 6 6M22 10l6 6-6 6"/></svg>
 
-Based on our 2024 paper in *Sustainable Cities and Society*. The research uses future climate scenarios; its temperature changes are modelled outcomes.
+::: {.research-pathway}
+<svg class="focus-icon" viewBox="1 0 32 32" width="32" height="32" aria-hidden="true" focusable="false"><circle cx="24" cy="8" r="4"/><path d="M3 28h26M6 28V15h8v13m0-8h9v8M3 8h8m-6 4h5M24 1v1m7 6h-1M17 3l1 1"/></svg>
 
-[Original publication](https://doi.org/10.1016/j.scs.2024.105811)
+### [Urban climate](research/index.qmd#urban-building-interactions) {#urban-climate}
+
+Urban form, local weather and environmental monitoring.
+:::
+<svg class="pathway-connector" viewBox="0 0 32 32" width="36" height="36" aria-hidden="true" focusable="false"><path d="M4 16h24M10 10l-6 6 6 6M22 10l6 6-6 6"/></svg>
+
+::: {.research-pathway}
+<svg class="focus-icon" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false"><rect x="10" y="10" width="12" height="12" rx="2"/><path d="M5 12a12 12 0 0 1 20-5m-5 0h5V2M27 20A12 12 0 0 1 7 25m5 0H7v5M13 14h6m-6 4h6"/></svg>
+
+### [Energy systems](research/index.qmd#low-carbon-technologies)
+
+Heating and cooling demand, heat pumps and outdoor heat exchange.
 :::
 :::
 
-## Selected research contributions
-
-::: {.contribution-list}
-- **Connecting scales:** SUEWS–EnergyPlus studies of [natural ventilation](publications/index.qmd#xie-2023-density) and [heat-pump interactions with urban climate](publications/index.qmd#xie-2024-heat-pumps).
-- **Placing retrofit in context:** Principal Investigator of [UMAR](projects/index.qmd#umar), a project on microclimate-aware retrofit that ran from October 2025 to September 2026.
-- **Understanding outdoor conditions:** Collaborative work on [mobile environmental monitoring](publications/index.qmd#lam-2025-monitoring) and [crowdsourced temperature data](publications/index.qmd#he-2025-gap-filling).
 :::
 
-## Featured publications
+::: {.home-contact}
+## Contact {#contact}
 
-::: {.generated-featured}
+::: {#collaboration}
+I welcome research collaboration on urban–building climate interactions, building energy and thermal resilience.
+
+**Prospective PhD students.** I welcome enquiries from **self-funded applicants or those with external funding**. Please email a brief introduction, your research interests and your funding source.
 :::
 
-[Browse and search publications →](publications/index.qmd){.text-link}
+::: {.contact-email}
+[xiaoxiong.xie@plymouth.ac.uk](mailto:xiaoxiong.xie@plymouth.ac.uk)
+:::
 
-::: {.collaborate}
-## Research collaboration
-
-I welcome collaboration and PhD enquiries on coupled urban–building models, retrofit under future climates, and linking simulations with local environmental measurements.
-
-[Collaboration and contact details →](about/index.qmd#contact){.text-link}
+::: {.contact-address}
+School of Art, Design and Architecture\
+University of Plymouth, Drake Circus, Plymouth PL4 8AA, UK
+:::
 :::

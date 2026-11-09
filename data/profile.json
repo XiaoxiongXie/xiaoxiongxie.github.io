@@ -1,0 +1,11 @@
+{
+  "portrait": "assets/portrait.jpg",
+  "portraitAlt": "Portrait of Dr Xiaoxiong Xie",
+  "links": [
+    { "label": "ORCID", "url": "https://orcid.org/0000-0003-2280-1768" },
+    { "label": "Google Scholar", "url": "https://scholar.google.com/citations?hl=en&user=SZzqPSYAAAAJ" },
+    { "label": "ResearchGate", "url": "https://www.researchgate.net/profile/Xiaoxiong-Xie" },
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/xiaoxiong-xie/" },
+    { "label": "Research Portal", "url": "https://researchportal.plymouth.ac.uk/en/persons/xiaoxiong-xie/" }
+  ]
+}

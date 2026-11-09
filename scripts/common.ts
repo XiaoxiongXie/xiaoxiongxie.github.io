@@ -41,7 +41,7 @@ export function publications(): any[] {
     if (!/^[a-z0-9-]+$/.test(p.id) || ids.has(p.id) || dois.has(p.doi)) throw new Error(`Duplicate or invalid publication: ${p.id}`);
     if (!/^10\.\d{4,9}\/.+/.test(p.doi)) throw new Error(`Invalid DOI: ${p.doi}`);
     if (!Array.isArray(p.authors) || !p.authors.includes("Xiaoxiong Xie")) throw new Error(`Check authors: ${p.id}`);
-    if (!Array.isArray(p.topics) || !Number.isInteger(p.year) || typeof p.selected !== "boolean") throw new Error(`Check fields: ${p.id}`);
+    if (!Array.isArray(p.topics) || !Number.isInteger(p.year)) throw new Error(`Check fields: ${p.id}`);
     if (!p.article && !p.pages) throw new Error(`Missing article number or pages: ${p.id}`);
     ids.add(p.id); dois.add(p.doi);
   }

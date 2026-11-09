@@ -7,14 +7,17 @@ project:
     - research/heat-pumps/index.qmd
     - publications/index.qmd
     - projects/index.qmd
+    - teaching/index.qmd
+    - background/index.qmd
     - about/index.qmd
     - accessibility/index.qmd
     - 404.qmd
   pre-render: scripts/prepare.ts
   post-render: scripts/post-render.ts
   resources:
-    - assets/
-    - robots.txt
+    # Leading slashes anchor resources to this project, excluding nested review copies.
+    - /assets/**
+    - /robots.txt
   preview:
     port: 4200
     browser: false
@@ -26,8 +29,9 @@ website:
   favicon: assets/favicon.svg
   open-graph: true
   navbar:
-    background: light
-    pinned: false
+    background: dark
+    foreground: light
+    pinned: true
     collapse-below: lg
     left:
       - href: index.qmd
@@ -37,17 +41,19 @@ website:
       - href: publications/index.qmd
         text: Publications
       - href: projects/index.qmd
-        text: Projects & recognition
-      - href: about/index.qmd
-        text: About & contact
+        text: Projects
+      - href: teaching/index.qmd
+        text: Teaching
+      - href: background/index.qmd
+        text: Background
   search:
     location: navbar
     type: overlay
   page-footer:
     border: true
-    left: "Dr Xiaoxiong Xie · University of Plymouth"
+    left: "Xiaoxiong Xie"
     right:
-      - href: about/index.qmd#contact
+      - href: index.qmd#contact
         text: Contact
       - href: accessibility/index.qmd
         text: Accessibility & privacy

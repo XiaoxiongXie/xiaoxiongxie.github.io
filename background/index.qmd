@@ -1,0 +1,94 @@
+---
+title: "Academic background"
+pagetitle: "Background"
+description: "Xiaoxiong Xie’s academic appointments, education, invited talks, professional service and the 2024 CIBSE Building Simulation Award."
+toc-depth: 2
+---
+
+## Work experience {#experience}
+
+::: {.career-list}
+::: {.career-entry}
+::: {.career-date}
+2024–present
+:::
+::: {.career-detail}
+### Lecturer in Building Engineering
+
+University of Plymouth, UK\
+School of Art, Design and Architecture
+:::
+:::
+::: {.career-entry}
+::: {.career-date}
+2023–2024
+:::
+::: {.career-detail}
+### Postdoctoral Research Associate
+
+Cardiff University, UK\
+Welsh School of Architecture
+:::
+:::
+:::
+
+## Education {#education}
+
+::: {.career-list}
+::: {.career-entry}
+::: {.career-date}
+2018–2023
+:::
+::: {.career-detail}
+### PhD in Energy and Environmental Engineering
+
+University of Reading, UK
+:::
+:::
+::: {.career-entry}
+::: {.career-date}
+2017–2018
+:::
+::: {.career-detail}
+### MSc in Architectural Engineering Design
+
+University of Sheffield, UK
+:::
+:::
+::: {.career-entry}
+::: {.career-date}
+2013–2017
+:::
+::: {.career-detail}
+### BEng (Hons) in Building Services Engineering
+
+Hong Kong Polytechnic University, Hong Kong SAR
+:::
+:::
+:::
+
+## Awards {#awards}
+
+### CIBSE Building Simulation Award 2024 {#cibse-award}
+
+I received the **2024 CIBSE Building Simulation Award** for work on multi-scale modelling of air-source heat-pump impacts on outdoor microclimates under 2050s UK scenarios.
+
+The [research explainer](../research/heat-pumps/index.qmd) introduces the methods and findings from our [2024 paper](../publications/index.qmd#xie-2024-heat-pumps).
+
+[CIBSE Journal announcement](https://www.cibsejournal.com/cibse-news/building-simulation-award-winners-announced/) · [CIBSE’s account of the winning entry](https://www.cibse.org/get-involved/special-interest-groups/all-sig-news/cibse-building-simulation-awards-2024-the-winning-entry-of-xiaoxiong-xie-university-of-plymouth/)
+
+## Selected invited talks {#invited-talks}
+
+- **July 2026 · Sun Yat-Sen University** — *Impact of urban climate on building energy use and overheating*. School of Atmospheric Science.
+- **November 2025 · CIBSE South West webinar** — *Simulating buildings in the urban environment*.
+- **July 2025 · IBPSA Education webinar** — *Multi-scale modelling of buildings in urban environments*.
+- **April 2025 · University of Birmingham** — *Indoor and urban thermal resilience in a changing climate*. 12th Urban Fluid Mechanics meeting.
+
+## Professional service and memberships {#professional-service}
+
+- **CIBSE AM11 revision:** contributing urban-scale simulation guidance to *Building Performance Modelling* (in progress).
+- **Associate Fellow of the Higher Education Academy (AFHEA)**.
+- **Secretary, Early Career Committee**, International Association for Urban Climate (IAUC), 2026–2028.
+- **Member**, International Building Performance Simulation Association (IBPSA).
+- **Graduate Member**, Chartered Institution of Building Services Engineers (CIBSE).
+

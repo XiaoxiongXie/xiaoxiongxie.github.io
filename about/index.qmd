@@ -1,65 +1,17 @@
 ---
-title: "About & contact"
-description: "Dr Xiaoxiong Xie’s academic background, professional memberships and institutional contact details for research collaborations and prospective PhD enquiries."
+title: "About & contact — new location"
+pagetitle: "About (moved)"
+description: "Find Xiaoxiong Xie’s introduction and contact details on Home, and experience, education and awards on Academic background."
+toc: false
+search: false
+include-in-header:
+  text: |
+    <meta name="robots" content="noindex, follow">
+    <script src="../assets/about-redirect.js" defer></script>
 ---
 
-## About me
+My introduction and contact details are on the homepage. Experience, education and awards are on Academic background.
 
-I am a **Lecturer in Building Engineering at the University of Plymouth**, in the School of Art, Design and Architecture. My research focuses on the interactions between buildings, urban climate and energy systems.
+[About me](../index.qmd#about) · [Research collaboration and contact](../index.qmd#contact)
 
-Before joining Plymouth, I was a Research Associate at the Welsh School of Architecture, Cardiff University (2023–2024).
-
-### Academic background
-
-::: {.table-scroll role="region" aria-label="Academic qualifications, horizontally scrollable" tabindex="0"}
-| Qualification | Institution | Period |
-|:---|:---|:---|
-| PhD, Energy and Environmental Engineering | University of Reading | 2018–2023 |
-| MSc, Architectural Engineering Design | University of Sheffield | 2017–2018 |
-| BEng (Hons), Building Services Engineering | Hong Kong Polytechnic University | 2013–2017 |
-:::
-
-### Professional roles and memberships
-
-- Secretary of the Early Career Committee, International Association for Urban Climate (2026–2028).
-- Member, International Building Performance Simulation Association (IBPSA).
-- Graduate Member, Chartered Institution of Building Services Engineers (CIBSE).
-
-Background and membership details are documented on my [University Research Portal profile](https://researchportal.plymouth.ac.uk/en/persons/xiaoxiong-xie/).
-
-## Collaboration {#collaboration}
-
-I welcome interdisciplinary work linking building engineering, urban climatology, energy systems and climate adaptation. Areas of interest include:
-
-- SUEWS–EnergyPlus coupling and multi-scale urban–building modelling.
-- Climate-resilient retrofit, natural ventilation and overheating.
-- Low-carbon heating and cooling and their interaction with local climate.
-- Environmental monitoring, urban thermal exposure and data-driven analysis.
-
-[Explore the research questions and related publications](../research/index.qmd).
-
-## Prospective PhD students
-
-I welcome enquiries about research aligned with these interests. Please email a brief outline of your proposed topic, relevant background and the research questions you would like to explore. My [institutional profile](https://researchportal.plymouth.ac.uk/en/persons/xiaoxiong-xie/) lists my availability for PhD enquiries; this invitation does not imply a funded studentship.
-
-## Contact {#contact}
-
-::: {.contact-block}
-**Dr Xiaoxiong Xie**\
-Lecturer in Building Engineering\
-School of Art, Design and Architecture\
-University of Plymouth
-
-**Email:** [xiaoxiong.xie@plymouth.ac.uk](mailto:xiaoxiong.xie@plymouth.ac.uk)
-
-University of Plymouth, Drake Circus, Plymouth, Devon PL4 8AA, UK
-:::
-
-These are public institutional contact details from my [University staff profile](https://www.plymouth.ac.uk/staff/xiaoxiong-xie).
-
-## Academic profiles
-
-- [University of Plymouth staff profile](https://www.plymouth.ac.uk/staff/xiaoxiong-xie)
-- [University Research Portal](https://researchportal.plymouth.ac.uk/en/persons/xiaoxiong-xie/)
-- [ORCID: 0000-0003-2280-1768](https://orcid.org/0000-0003-2280-1768)
-- [Energy Demand Research Centre profile](https://www.edrc.ac.uk/people/profile/dr-xiaoxiong-xie/)
+[Academic background](../background/index.qmd)

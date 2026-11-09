@@ -5,7 +5,6 @@
   const search = document.querySelector('#publication-search');
   const year = document.querySelector('#publication-year');
   const topic = document.querySelector('#publication-topic');
-  const selected = document.querySelector('#publication-selected');
   const entries = [...document.querySelectorAll('.publication')];
   const status = document.querySelector('#publication-count');
   const empty = document.querySelector('#publication-empty');
@@ -17,8 +16,7 @@
     entries.forEach((entry, index) => {
       const show = words.every(word => texts[index].includes(word)) &&
         (!year.value || entry.dataset.year === year.value) &&
-        (!topic.value || JSON.parse(entry.dataset.topics).includes(topic.value)) &&
-        (!selected.checked || entry.dataset.selected === 'true');
+        (!topic.value || JSON.parse(entry.dataset.topics).includes(topic.value));
       entry.hidden = !show;
       if (show) count++;
     });
@@ -29,7 +27,6 @@
   controls.addEventListener('input', filter);
   document.querySelector('#publication-reset').addEventListener('click', () => {
     search.value = year.value = topic.value = '';
-    selected.checked = false;
     filter();
     search.focus();
   });
