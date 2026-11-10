@@ -45,6 +45,8 @@ jobs:
         run: quarto render
       - name: Validate generated website
         run: quarto run scripts/validate.ts
+      - name: Validate analytics privacy controls
+        run: quarto run scripts/check-analytics.ts
       - name: Validate search notification safeguards
         run: quarto run scripts/check-indexnow.ts
       - name: Upload GitHub Pages artifact

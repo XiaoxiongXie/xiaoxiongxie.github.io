@@ -9,6 +9,16 @@ export function siteUrl(): URL {
   if (!url.pathname.endsWith("/")) url.pathname += "/";
   return url;
 }
+// Cloudflare's public beacon identifier, not an account/API credential.
+// Null leaves the integration off until the owner supplies their site snippet.
+export function analyticsToken(): string | null {
+  const { cloudflareToken } = JSON.parse(Deno.readTextFileSync("data/analytics.json"));
+  if (cloudflareToken === null) return null;
+  if (typeof cloudflareToken !== "string" || !/^[a-f0-9]{32}$/i.test(cloudflareToken)) {
+    throw new Error("Use the 32-character token from Cloudflare Web Analytics, or null to disable analytics. Do not use an API token.");
+  }
+  return cloudflareToken;
+}
 export function escapeHtml(value: unknown): string {
   return String(value).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]!));
 }

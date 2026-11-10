@@ -77,7 +77,9 @@ format:
       - _generated/person.html
       - includes/search-verification.html
       - includes/ai-preferences.html
-    include-after-body: includes/scripts.html
+    include-after-body:
+      - includes/scripts.html
+      - _generated/analytics.html
     grid:
       body-width: 850px
       sidebar-width: 200px

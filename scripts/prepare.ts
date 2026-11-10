@@ -1,9 +1,17 @@
-import { escapeHtml as h, jsonLd, publications, siteUrl } from "./common.ts";
+import { escapeHtml as h, jsonLd, publications, siteUrl, analyticsToken } from "./common.ts";
 
 const base = siteUrl();
 const pubs = publications();
 const profile = JSON.parse(Deno.readTextFileSync("data/profile.json"));
 Deno.mkdirSync("_generated", { recursive: true });
+const token = analyticsToken();
+Deno.writeTextFileSync("_generated/analytics.html", token ? `<script src="/assets/analytics.js" data-cloudflare-token="${h(token)}" data-site-url="${h(base.href)}" defer></script>` : "");
+Deno.writeTextFileSync("_generated/analytics-privacy.html", token ? `<p>This site uses <a href="https://www.cloudflare.com/web-analytics/">Cloudflare Web Analytics</a> for aggregate usage and performance statistics to improve the website, without analytics cookies. <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare privacy information</a>.</p>
+<div class="analytics-preferences">
+<button type="button" class="btn btn-outline-secondary" id="analytics-toggle" aria-describedby="analytics-status" hidden>Turn off analytics in this browser</button>
+<p id="analytics-status" role="status" aria-live="polite"></p>
+</div>
+<noscript><p>Analytics do not run when JavaScript is disabled.</p></noscript>` : "");
 let portrait = "";
 if (profile.portrait !== null) {
   if (typeof profile.portrait !== "string" || !/^assets\/[a-zA-Z0-9_/-]+\.(jpg|jpeg|png|webp)$/.test(profile.portrait) || profile.portrait.includes("..")) throw new Error("Use a local JPG, PNG or WebP portrait in assets/.");

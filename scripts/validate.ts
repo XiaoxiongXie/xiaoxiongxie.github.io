@@ -1,8 +1,9 @@
 // Dependency-free build checks, executed with the Deno runtime bundled in Quarto.
-import { config, siteUrl, publications, htmlFiles, cleanPath } from "./common.ts";
+import { config, siteUrl, publications, htmlFiles, cleanPath, analyticsToken } from "./common.ts";
 import { parse } from "stdlib/yaml";
 import { indexNowPayload } from "./notify-indexnow.mjs";
 const base = siteUrl();
+const cloudflareToken = analyticsToken();
 const output = "_site";
 const errors: string[] = [];
 const assert = (ok: unknown, message: string) => { if (!ok) errors.push(message); };
@@ -75,10 +76,24 @@ for (const [path, html] of documents) {
       assert(documents.get(target)!.includes(`id="${anchor}"`), label + `missing fragment: ${raw}`);
     }
   }
-  // External links are intentional; remotely loaded scripts, frames and tracking are not.
+  const analyticsLoaders = [...html.matchAll(/<script\b[^>]*data-cloudflare-token="([^"]*)"[^>]*>/gi)];
+  assert(analyticsLoaders.length === (cloudflareToken ? 1 : 0), label + "incorrect analytics loader count");
+  if (cloudflareToken) {
+    const loader = analyticsLoaders[0]?.[0] || "";
+    assert(analyticsLoaders[0]?.[1] === cloudflareToken && loader.includes(`data-site-url="${base.href}"`), label + "incorrect public analytics configuration");
+    assert(/src="[^\"]*assets\/analytics\.js"/.test(loader) && /\bdefer\b/.test(loader), label + "analytics must use the deferred local loader");
+  }
+  // No unconditional third-party script: the local analytics loader checks
+  // the public origin and privacy choices before requesting Cloudflare.
   assert(!/<(?:script|iframe)\b[^>]*src="https?:/i.test(html), label + "third-party script or frame");
   assert(!/<link\b[^>]*(?:href="https?:[^\"]+")[^>]*rel="stylesheet"/i.test(html), label + "remote stylesheet");
   assert(!/googletagmanager|google-analytics\.com|plausible\.io\/js/.test(html), label + "tracking script found");
+}
+const privacyHtml = documents.get("accessibility/index.html") || "";
+assert(privacyHtml.includes('id="analytics-toggle"') === Boolean(cloudflareToken), "Analytics preference control differs from configuration");
+if (cloudflareToken) {
+  assert(privacyHtml.includes("Cloudflare Web Analytics") && privacyHtml.includes("without analytics cookies"), "Missing concise analytics disclosure");
+  assert(!privacyHtml.includes("no analytics or advertising"), "Outdated privacy statement");
 }
 const sitemap = Deno.readTextFileSync(`${output}/sitemap.xml`);
 const indexNowKey = Deno.readTextFileSync("data/indexnow-key.txt").trim();

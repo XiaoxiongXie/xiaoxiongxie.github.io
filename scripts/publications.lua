@@ -9,6 +9,7 @@ function Div(div)
     name = "paper-" .. id
   end
   if div.classes:includes("generated-portrait") then name = "portrait" end
+  if div.classes:includes("generated-analytics-privacy") then name = "analytics-privacy" end
   if not name then return nil end
   local path = quarto.project.directory .. "/_generated/" .. name .. ".html"
   local file = assert(io.open(path, "r"), "Run a project-level quarto render to generate publications.")
