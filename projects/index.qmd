@@ -1,0 +1,55 @@
+---
+title: "Funded projects"
+pagetitle: "Projects"
+description: "Xiaoxiong Xie’s funded research on microclimate-aware retrofit, electrified heating and cooling, and urban overheating, including the UMAR project."
+toc-depth: 2
+include-in-header:
+  text: |
+    <script src="../assets/project-redirect.js" defer></script>
+---
+
+## UMAR {#umar}
+
+### Urban microclimate-aware retrofitting framework for climate-resilient energy demand reduction
+
+::: {.project-meta}
+**Role:** Principal Investigator
+
+**Funder:** [Energy Demand Research Centre](https://www.edrc.ac.uk/) (EDRC, funded by EPSRC/ESRC)
+
+**Year:** 2025–2026
+:::
+
+UMAR investigated how urban microclimate can inform climate-resilient retrofit of social housing. Working with **Plymouth Community Homes**, we combined urban climate and building energy modelling to assess heating demand, summer overheating and retrofit options under current and future climates.
+
+::: {.source-note}
+[EDRC project overview](https://www.edrc.ac.uk/research/projects/urban-microclimate-aware-retrofitting-framework-for-climate-resilient-energy-demand-reduction-umar/) · [University project record](https://researchportal.plymouth.ac.uk/en/projects/urban-microclimate-aware-retrofitting-framework-for-climate-resil/).
+:::
+
+**Related research:** [Climate-resilient buildings and retrofit](../research/index.qmd#climate-resilient-retrofit).
+
+## Other funded research {#other-funded-research}
+
+### Urban climate resilience and inequality from electrified building heating and cooling in a changing climate {#dpi-climate}
+
+::: {.project-meta}
+**Role:** Researcher Co-Investigator
+
+**Year:** 2023–2025
+
+**Funding:** [Cardiff–Illinois collaboration fund](https://dpi.illinois.edu/news/inaugural-cardiff-illinois-collaboration-fund-launched-with-cardiff-university-and-discovery-partners-institute), Discovery Partners Institute and Cardiff University
+:::
+
+### Increasing urban overheating risk from cooling decarbonisation by heat pumps {#heat-pump-overheating}
+
+::: {.project-meta}
+**Role:** Key Researcher (Postdoctoral Research Associate)
+
+**Year:** 2023–2024
+
+**Funding:** EPSRC, through the [H+C Zero Network](https://gtr.ukri.org/find-research-and-innovation/project/50d53f5a-e5e8-466a-97c6-cad12fe52c6e)
+:::
+
+The project examined how heat rejected during heat-pump cooling could affect urban microclimates and indoor heat exposure. [Cardiff University project overview](https://www.cardiff.ac.uk/research/explore/find-a-project/view/2806605-increasing-urban-overheating-risk-from-cooling-decarbonisation-by-heat-pumps).
+
+**Related research:** [Heat pumps and urban energy exchange](../research/index.qmd#low-carbon-technologies).

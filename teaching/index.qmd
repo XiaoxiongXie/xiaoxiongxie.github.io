@@ -1,0 +1,74 @@
+---
+title: "Teaching"
+description: "Xiaoxiong Xie’s module leadership, undergraduate and MSc dissertation supervision experience, and guest teaching in building engineering and urban climate."
+body-classes: teaching
+toc: false
+---
+
+## University of Plymouth {#plymouth-teaching}
+
+::: {.eyebrow #modules}
+Module leader / convener
+:::
+
+::: {.module-list}
+::: {.module-row}
+[BLDG507]{.module-code}
+
+::: {.module-detail}
+### Low Energy Building Design
+
+[2025–present]{.module-period}
+:::
+:::
+::: {.module-row}
+[BLDG510]{.module-code}
+
+::: {.module-detail}
+### Property Development and Refurbishment
+
+[2026–present]{.module-period}
+:::
+:::
+::: {.module-row}
+[BLDG511]{.module-code}
+
+::: {.module-detail}
+### Building Services Engineering
+
+[2024–present]{.module-period}
+:::
+:::
+::: {.module-row}
+[BLDG608]{.module-code}
+
+::: {.module-detail}
+### Building Control and Commissioning
+
+[2024–present]{.module-period}
+:::
+:::
+::: {.module-row}
+[BLDG611]{.module-code}
+
+::: {.module-detail}
+### Research Methods in the Built Environment {#research-methods}
+
+[2024–2026]{.module-period}
+:::
+:::
+:::
+
+## Student supervision {#student-supervision}
+
+I supervise undergraduate dissertations at the University of Plymouth. Previously, I assisted with MSc dissertation supervision at Cardiff University and the University of Reading.
+
+For prospective PhD enquiries, see my [research interests](../research/index.qmd) and [funding and contact information](../index.qmd#collaboration).
+
+## Guest lectures {#guest-lectures}
+
+**Urban climate and its influence on buildings** — Guest lecture, Department of Engineering, University of Exeter, UK, February 2026.
+
+## Research reading {#research-reading}
+
+Explore how building services affect the outdoor environment in [How do air-source heat pumps affect urban microclimates?](../research/heat-pumps/index.qmd).
